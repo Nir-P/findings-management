@@ -12,8 +12,8 @@ app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
 Base = declarative_base()
-URL = os.environ.get("DATABASE_URL")
-engine = create_engine(URL, echo=True)
+DATABASE_CONN = os.environ.get("DATABASE_URL")
+engine = create_engine(DATABASE_CONN, echo=True)
 Session = sessionmaker(engine)
 
 
@@ -67,7 +67,6 @@ class Finding(Base):
     finding_header = Column(String, nullable=False)
     finding_content = Column(String)
     report_id = Column(Integer, ForeignKey("report.id"), nullable=False)
-    created_by_username = Column(String, ForeignKey("users.id"), nullable=False)
 
 
 class Recommendations(Base):
@@ -150,13 +149,12 @@ def all_user_finding(username):
     return all_finding
 
 
-def add_finding(finding_header, finding_content, report_id, created_by_username):
+def add_finding(finding_header, finding_content, report_id):
     session = Session()
     finding = Finding(
         finding_header=finding_header,
         finding_content=finding_content,
         report_id=report_id,
-        created_by_username=created_by_username
         )
     session.add(finding)
     session.flush()
@@ -349,7 +347,7 @@ def add_finding_and_recommendation(report):
                 return render_template("add_finding_and_recommendation.html", first_name=g.user_fn, user_reports=user_reports, this_report=this_report[0], report=report)
             elif request.method == "POST":
                 rf = request.form
-                finding_id = add_finding(rf["finding_header"], rf["finding_text"], int(report), g.username)  # add finding and get his autoincrement id
+                finding_id = add_finding(rf["finding_header"], rf["finding_text"], int(report))  # add finding and get his autoincrement id
                 add_recommendations(rf["recommendation_header"], rf["recommendation_text"], finding_id)
                 return "True"
         else:
@@ -360,8 +358,8 @@ def add_finding_and_recommendation(report):
 def delete_finding_and_recommendation(finding_recommendation):
     finding_recommendation = int(finding_recommendation)
     if g.username and (finding_recommendation in all_user_finding(g.username)):
-        delete_finding(finding_recommendation)
         delete_recommendations(finding_recommendation)
+        delete_finding(finding_recommendation)
         return f"Success, num:{finding_recommendation} finding and recommendation deleted"
     else:
         return "You don't have permission to this action"
