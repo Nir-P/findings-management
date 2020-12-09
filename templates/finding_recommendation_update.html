@@ -1,0 +1,42 @@
+{% extends "base2.html" %}
+{% block header_left %}
+<link rel="stylesheet" href="../../../static/style2.css"/>
+<link rel="icon" href="../../../static/NP.ico" type="../../image/x-icon" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% endblock %}
+
+{% block head_items %}
+<li><a href="/"><img src="../../../static/Nirp.png" alt="nir logo" id="nir_logo" height="40px" width="40px"></a></li>
+{% endblock %}
+      
+{% block content %}
+  <div class="container">
+    <div class="sidebar">
+      <p><a href="/add_report">הוסף דוח</a></p>
+      {% for report in user_reports %}
+      <p><a href="/reports/{{report.id}}">{{report.report_name}}</a></p>
+      {% endfor %}
+    </div>
+    <div class="main">
+      <h2>שם הדוח: {{this_report[1]}}</h2>
+      <form method="post">
+        <h3>הוספת ממצא והמלצה</h3>
+        <div class="finding-recommendation">
+          <div class="finding">
+            <label for="finding_header">כותרת הממצא:</label>
+            <input id="finding_header" name="finding_header" type="text" size="50" value="{{content_retrieve[0]}}" required><br><br>
+            <label for="text">תוכן הממצא:</label><br>
+            <textarea id="finding_body" name="finding_text" rows="10" cols="60">{{content_retrieve[1]}}</textarea><br>
+          </div>
+          <div class="recommendation">
+            <label for="recommendation_header">כותרת ההמלצה:</label>
+            <input id="recommendation_header" name="recommendation_header" type="text" size="50" value="{{content_retrieve[2]}}" required><br><br>
+            <label for="text">תוכן ההמלצה:</label><br>
+            <textarea id="recommendation_body" name="recommendation_text" rows="10" cols="60">{{content_retrieve[3]}}</textarea><br>  
+          </div>
+          <input type="submit" value="הוסף ממצא והמלצה" id="submit">
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

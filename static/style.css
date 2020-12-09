@@ -1,0 +1,125 @@
+@font-face {
+    font-family: "Alef";
+    src: url("font/Alef-regular.woff2");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+@font-face {
+    font-family: "trashimclm";
+    src: url("font/trashimclm-bold-webfont.woff2");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+html {
+    font-family: "Alef";
+    text-align: right;
+    direction: rtl;
+}
+
+body{
+    background-image: url("site_background.jpg");
+    background-size: cover;
+}
+
+
+h1 {
+    margin: auto;
+    font-family: "trashimclm";
+    font-size: 3rem;
+}
+
+p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.replace_words_content {
+    display: none;
+    padding-right: 20px;
+}
+
+#replace_words:checked ~ .replace_words_content {
+    display: inline-block;
+}
+
+.input_output {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #0000001f;
+    margin: 50px;
+    padding: 30px 0 30px 0;
+    border-radius: 20px;
+    line-height: 30px;
+}
+
+.input_side {
+    background-color: #71bbd9;
+    margin: 30px;
+    flex: 30%;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.output_side {
+    background-color: #71bbd9;
+    margin: 30px;
+    flex: 30%;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#nir_logo {
+    display: block;
+    width: 50px;
+    height: 50px;
+}
+
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 50px;
+    border-radius: 10px;
+}
+
+footer {
+    margin: 50px;
+    border-radius: 10px;
+}
+
+#submit{
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 15px;
+    padding: 15px 30px;
+    text-align: center;
+    color:#000000;
+    background-color: #94d6f1;
+    border-color: #315868;
+
+}
+
+#submit:hover {
+    color: white;
+    background-color: royalblue;
+}
+
+textarea:focus {
+    background-color: AliceBlue;
+    border: 5px solid royalblue;
+}
+
+textarea {
+    width: 80%;
+}
+
+.center_text{
+    text-align: center;
+}
+
+input[type=checkbox], input[type=submit], input[type=text] {
+    margin: 10px;
+}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block header_left %}
+<li><a href="sign_up">הרשמה</a></li>
+<li><a href="sign_in">התחברות</a></li>
+{% endblock %}
+{% block content %}
+<form method="post">
+  <h2>התחברות למערכת<br></h2>
+  <label for="first-name">שם משתמש:</label>
+  <input id="username" name="username" type="text"><br><br>
+  <label for="password">סיסמה:</label>
+  <input id="password" name="password" type="password" minlength="8" required><br><br>
+  <input type="submit" value="התחבר" id="submit">   
+</form>
+{% endblock %}

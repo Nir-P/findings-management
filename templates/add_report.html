@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block header_left %}
+  <li>שלום {{first_name}}</li>
+  <li><a href="/disconnect">התנתקות</a></li>
+{% endblock %}
+{% block content %}
+  <div class="container">
+    <div class="sidebar">
+      <p><a href="/add_report">הוסף דוח</a></p>
+      {% for report in user_reports %}
+      <p><a href="/reports/{{report.id}}">{{report.report_name}}</a></p>
+      {% endfor %}
+    </div>
+    <div class="main">
+      <form method="post">
+        <h2>הוספת דוח<br></h2>
+        <label for="report-name">שם הדוח:</label>
+        <input id="report-name" name="report-name" type="text"><br><br>
+        <input type="submit" value="צור דוח" id="submit">   
+      </form>
+    </div>
+      
+  </div>
+{% endblock %}

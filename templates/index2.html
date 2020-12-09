@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>2כותרת</title>
+    <link rel="stylesheet" href="static/style2.css"/>
+    <link rel="icon" href="static/NP.ico" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="header">
+      <ul class="head_items">
+        <li><img src="static/Nirp.png" alt="nir logo" id="nir_logo" height="40px" width="40px"></li>
+        <li class="h1_head"><h1>מערכת לניהול ממצאים</h1></li>
+        <li><a href="indexA.html">הרשמה</a></li>
+        <li><a href="indexA.html">התחברות</a></li>
+      </ul>
+    </div>
+    {% for _ in range(5) %}
+    <div class="finding-recommendation">
+      <div class="finding">
+        <h2>ממצא</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed velit in tellus sagittis feugiat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean ullamcorper nulla a nibh consectetur pretium. Nunc hendrerit laoreet congue. Donec vitae ex in augue rutrum semper vel a dui. Pellentesque finibus dui ut est posuere pellentesque. Quisque malesuada dignissim enim, quis dignissim lorem luctus sodales. Suspendisse fringilla fringilla scelerisque. Praesent feugiat ligula vel mi interdum iaculis. Vestibulum sem mi, mollis in lobortis non, vehicula quis enim. Nunc finibus bibendum leo. Proin elementum ipsum purus, quis accumsan massa pellentesque faucibus.
+        </p>
+      </div>
+      <div class="recommendation">
+        <h2>המלצה</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed velit in tellus sagittis feugiat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean ullamcorper nulla a nibh consectetur pretium. Nunc hendrerit laoreet congue. Donec vitae ex in augue rutrum semper vel a dui. Pellentesque finibus dui ut est posuere pellentesque. Quisque malesuada dignissim enim, quis dignissim lorem luctus sodales. Suspendisse fringilla fringilla scelerisque. Praesent feugiat ligula vel mi interdum iaculis. Vestibulum sem mi, mollis in lobortis non, vehicula quis enim. Nunc finibus bibendum leo. Proin elementum ipsum purus, quis accumsan massa pellentesque faucibus.
+        </p>
+      </div>
+    </div>
+    {% endfor %}
+    <footer class="site_border">
+        <p class="center_text">כל הזכויות שמורות © ניר פרלשטיין 2020.</p>
+    </footer>
+  </body>
+
+</html>

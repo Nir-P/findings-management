@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>2כותרת</title>
+    <link rel="stylesheet" href="static/style2.css"/>
+    <link rel="icon" href="static/NP.ico" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="header">
+      <ul class="head_items">
+        <li><a href="/"><img src="static/Nirp.png" alt="nir logo" id="nir_logo" height="40px" width="40px"></a></li>
+        <li class="h1_head"><h1>מערכת לניהול ממצאים</h1></li>
+        {% block header_left %}
+
+        {% endblock %}
+      </ul>
+    </div>
+    <div class="content">
+        {% block content %}
+        <div class="container">
+          <div class="sidebar">
+            <p>הוסף דוח</p>
+            <p>דוח 1 -ההההה</p>
+            <p>דוח 2 - ההההה</p>
+          </div>
+          <div class="main">
+            <p>דוח X</p>
+            <p>הוסף ממצא והמלצה</p>
+            <div class="finding-recommendation">
+              <div class="finding">
+                <h2>ממצא</h2>
+                <p>כותרת</p>
+                <p>תוכן</p>
+              </div>
+              <div class="recommendation">
+                <h2>המלצה</h2>
+                <p>כותרת</p>
+                <p>תוכן</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        {% endblock %}
+    </div>
+    <footer class="site_border">
+        <p class="center_text">כל הזכויות שמורות © ניר פרלשטיין 2020.</p>
+    </footer>
+  </body>
+
+</html>

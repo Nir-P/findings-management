@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>2כותרת</title>
+    {% block header_left %}
+    {% endblock %}
+  </head>
+  <body>
+    <div class="header">
+      <ul class="head_items">
+        {% block head_items %}
+        {% endblock %}
+        <li class="h1_head"><h1>מערכת לניהול ממצאים</h1></li>
+        <li>שלום {{first_name}}</li>
+        <li><a href="/disconnect">התנתקות</a></li>
+      </ul>
+    </div>
+    <div class="content">
+      {% block content %}
+      {% endblock %}
+    </div>
+    <footer class="site_border">
+      <p class="center_text">כל הזכויות שמורות © ניר פרלשטיין 2020.</p>
+    </footer>
+  </body>
+</html>

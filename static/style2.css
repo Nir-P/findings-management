@@ -1,0 +1,76 @@
+html {
+    font-family: "Alef";
+    text-align: right;
+    direction: rtl;
+}
+
+.header {
+    position: sticky;
+    top: 0px;
+    background-color: lightskyblue;
+}
+
+.head_items {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 1fr;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    place-self: center;
+    background-color: royalblue;
+    color: #fff;
+    padding: 0.2em 0.8em;
+    border-radius: 0.2em;
+    margin: 0.15rem;
+}
+    
+li a {
+    font-size: 1.25rem;
+}
+
+.h1_head {
+    background-color: transparent;
+    color: darkblue;
+    font-size: 1rem;
+}
+
+.finding-recommendation{
+    background-color: blue;
+    display: flex;
+    flex: 1 1;
+    justify-content: space-evenly;
+}
+
+.finding-recommendation div{
+    background-color: lightblue;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    margin: 1rem;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "sidebar main"
+}
+
+.main {
+    grid-area: main;
+    background-color: green;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: black;
+    color: white;
+}
+
+footer {
+    margin-top: 2rem;
+}
