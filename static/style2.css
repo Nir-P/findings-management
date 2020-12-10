@@ -1,13 +1,34 @@
+@font-face {
+    font-family: "Alef";
+    src: url("font/Alef-regular.woff2");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+@font-face {
+    font-family: "trashimclm";
+    src: url("font/trashimclm-bold-webfont.woff2");
+    font-weight: normal;
+    font-style: normal;
+  }
+
 html {
     font-family: "Alef";
     text-align: right;
     direction: rtl;
+    background-color: aliceblue;
+}
+
+h1 {
+    margin: auto;
+    font-family: "trashimclm";
+    font-size: 3rem;
 }
 
 .header {
     position: sticky;
     top: 0px;
-    background-color: lightskyblue;
+    background-color: #07475c;
 }
 
 .head_items {
@@ -21,11 +42,11 @@ ul {
 
 li {
     place-self: center;
-    background-color: royalblue;
     color: #fff;
     padding: 0.2em 0.8em;
     border-radius: 0.2em;
     margin: 0.15rem;
+    font-size: 1.25rem
 }
     
 li a {
@@ -34,12 +55,13 @@ li a {
 
 .h1_head {
     background-color: transparent;
-    color: darkblue;
+    color: white;
     font-size: 1rem;
 }
 
 .finding-recommendation{
-    background-color: blue;
+    background-image: url("site_background.jpg");
+    background-size: cover;
     display: flex;
     flex: 1 1;
     justify-content: space-evenly;
@@ -47,9 +69,32 @@ li a {
 
 .finding-recommendation div{
     background-color: lightblue;
-    padding: 0.5rem;
-    border-radius: 0.25rem;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
     margin: 1rem;
+    min-width: 15rem;
+}
+
+textarea:focus {
+    background-color: AliceBlue;
+    border: 5px solid royalblue;
+}
+
+#submit{
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 15px;
+    padding: 15px 30px;
+    text-align: center;
+    color:#000000;
+    background-color: #94d6f1;
+    border-color: #315868;
+
+}
+
+#submit:hover {
+    color: white;
+    background-color: royalblue;
 }
 
 .container {
@@ -62,13 +107,32 @@ li a {
 
 .main {
     grid-area: main;
-    background-color: green;
+    background-color: lightblue;
+    text-align: center
 }
 
 .sidebar {
     grid-area: sidebar;
-    background-color: black;
+    background-color: #07475c;
     color: white;
+    text-align: center
+}
+
+a {
+    border-radius: 0.75rem
+}
+    
+a:link, a:visited {
+    background-color: #6db2c8;
+    color: white;
+    padding: 0.8rem 0.8rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+    
+a:hover, a:active {
+    background-color: #446f7d;
 }
 
 footer {

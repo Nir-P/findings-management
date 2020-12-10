@@ -1,3 +1,4 @@
+import bcrypt
 from flask import Flask, g, redirect, render_template, request, session as ses, url_for
 from sqlalchemy import create_engine, Column, Date, exc, Integer, Table, String, ForeignKey
 from sqlalchemy.orm import relationship, sessionmaker
@@ -82,14 +83,14 @@ class Report(Base):
     id = Column(Integer, primary_key=True)
     report_name = Column(String, nullable=False, unique=True)
 
-    users = relationship('Users', secondary='report_user')
+    users = relationship("Users", secondary="report_user")
 
 
 def create_user(username, password, first_name, last_name):
     session = Session()
     user = Users(
         username=username,
-        password=password,
+        password=bcrypt.hashpw(password=password.encode('utf-8'), salt=bcrypt.gensalt()).decode('utf-8'),
         creation_date=date.today(),
         first_name=first_name,
         last_name=last_name
@@ -109,7 +110,7 @@ def check_username_password(username, password):
     session = Session()
     user = session.query(Users).filter_by(username=username).first()
     session.close()
-    if user is not None and user.password == password:
+    if user is not None and bcrypt.checkpw(password.encode('utf-8'), user.password.encode('utf-8')):
         return user
     return None
 
@@ -262,6 +263,8 @@ Base.metadata.create_all(bind=engine)  # this line create the database
 
 @app.route('/')
 def homepage():
+    if g.username:
+        return render_template("homepage_logged.html", first_name=g.user_fn)
     return render_template("homepage.html")
 
 
@@ -349,18 +352,18 @@ def add_finding_and_recommendation(report):
                 rf = request.form
                 finding_id = add_finding(rf["finding_header"], rf["finding_text"], int(report))  # add finding and get his autoincrement id
                 add_recommendations(rf["recommendation_header"], rf["recommendation_text"], finding_id)
-                return "True"
+                return redirect(url_for("show_report", report=report))
         else:
             return "You don't have permission to this report"
 
 
-@app.route('/finding/<finding_recommendation>/delete')
-def delete_finding_and_recommendation(finding_recommendation):
+@app.route('/<report>/finding/<finding_recommendation>/delete')
+def delete_finding_and_recommendation(report, finding_recommendation):
     finding_recommendation = int(finding_recommendation)
     if g.username and (finding_recommendation in all_user_finding(g.username)):
         delete_recommendations(finding_recommendation)
         delete_finding(finding_recommendation)
-        return f"Success, num:{finding_recommendation} finding and recommendation deleted"
+        return redirect(url_for("show_report", report=report))
     else:
         return "You don't have permission to this action"
 
@@ -381,7 +384,7 @@ def update_finding_and_recommendation(report, finding_recommendation):
             rf = request.form
             update_finding(finding_recommendation, rf["finding_header"], rf["finding_text"])
             update_recommendation(finding_recommendation, rf["recommendation_header"], rf["recommendation_text"])
-            return "True"
+            return redirect(url_for("show_report", report=report))
     else:
         return "You don't have permission to this action"
 
